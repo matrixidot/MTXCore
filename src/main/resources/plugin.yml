@@ -1,0 +1,12 @@
+name: MTXCore
+version: '${project.version}'
+main: io.github.matrixidot.mtxcore.MTXCore
+api-version: '1.20'
+load: STARTUP
+commands:
+  attach:
+    description: "Grants the player the specified ability"
+    usage: "/attach <player> <abilityName>"
+  detach:
+    description: "Removes the specified ability from the specified player"
+    usage: "/detach <player> <abilityName>"
