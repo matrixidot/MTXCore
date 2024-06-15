@@ -22,7 +22,6 @@ public abstract class Ability implements Listener {
         players = new ArrayList<>();
         this.abilityName = abilityName;
         this.abilityDescription = abilityDescription;
-        Abilities.addAbility(this, plugin);
     }
 
     public boolean isBound(Player player) {

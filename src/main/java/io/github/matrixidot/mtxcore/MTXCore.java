@@ -1,22 +1,23 @@
 package io.github.matrixidot.mtxcore;
 
-import io.github.matrixidot.mtxcore.ability.AttachCommand;
-import io.github.matrixidot.mtxcore.ability.AttachTab;
-import io.github.matrixidot.mtxcore.ability.DetachCommand;
-import io.github.matrixidot.mtxcore.ability.DetachTab;
+import io.github.matrixidot.mtxcore.ability.*;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class MTXCore extends JavaPlugin {
-    private static MTXCore core;
+public class MTXCore extends JavaPlugin {
+    private static Abilities abilities;
     @Override
     public void onEnable() {
-        core = this;
+        abilities = new Abilities();
         getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "===================");
         getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "=MTXCore Activated=");
         getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "===================");
 
+        getCommand("attach").setExecutor(new AttachCommand());
+        getCommand("attach").setTabCompleter(new AttachTab());
 
+        getCommand("detach").setExecutor(new DetachCommand());
+        getCommand("detach").setTabCompleter(new DetachTab());
 
     }
 
@@ -25,11 +26,7 @@ public final class MTXCore extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    public static void postLoad() {
-        core.getCommand("attach").setExecutor(new AttachCommand());
-        core.getCommand("attach").setTabCompleter(new AttachTab());
-
-        core.getCommand("detach").setExecutor(new DetachCommand());
-        core.getCommand("detach").setTabCompleter(new DetachTab());
+    public static Abilities abilities() {
+        return abilities;
     }
 }

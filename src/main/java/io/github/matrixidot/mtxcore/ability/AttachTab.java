@@ -1,5 +1,6 @@
 package io.github.matrixidot.mtxcore.ability;
 
+import io.github.matrixidot.mtxcore.MTXCore;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -16,7 +17,7 @@ public class AttachTab implements TabCompleter {
         if (args.length == 1)
             return new ArrayList<>(Bukkit.getOnlinePlayers().stream().map(Player::getName).toList());
         if (args.length == 2)
-            return Abilities.detachedAbilitiesList(Bukkit.getPlayer(args[0])).stream().map(Ability::getName).toList();
+            return MTXCore.abilities().detachedAbilitiesList(Bukkit.getPlayer(args[0])).stream().map(Ability::getName).toList();
         return new ArrayList<>();
     }
 }

@@ -1,5 +1,6 @@
 package io.github.matrixidot.mtxcore.ability;
 
+import io.github.matrixidot.mtxcore.MTXCore;
 import io.github.matrixidot.mtxcore.ability.Abilities;
 import io.github.matrixidot.mtxcore.ability.Ability;
 import org.bukkit.Bukkit;
@@ -31,13 +32,13 @@ public class DetachCommand implements CommandExecutor {
 
         if (args.length == 1) {
             send.sendMessage(ChatColor.RED + "You need an ability name. Here are all of the abilities that " + player.getName() + " has:");
-            send.sendMessage(Abilities.attachedAbilitiesString(player));
+            send.sendMessage(MTXCore.abilities().attachedAbilitiesString(player));
             return false;
         }
 
-        List<Ability> abilities = Abilities.attachedAbilitiesList(player);
+        List<Ability> abilities = MTXCore.abilities().attachedAbilitiesList(player);
 
-        Ability ab = Abilities.getAbility(args[1]);
+        Ability ab = MTXCore.abilities().getAbility(args[1]);
         if (ab == null) {
             send.sendMessage(ChatColor.RED + args[1] + " is not a valid ability.");
             return false;

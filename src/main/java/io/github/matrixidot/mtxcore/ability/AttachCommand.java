@@ -1,7 +1,6 @@
 package io.github.matrixidot.mtxcore.ability;
 
-import io.github.matrixidot.mtxcore.ability.Abilities;
-import io.github.matrixidot.mtxcore.ability.Ability;
+import io.github.matrixidot.mtxcore.MTXCore;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -28,12 +27,13 @@ public class AttachCommand implements CommandExecutor {
         }
 
         if (args.length == 1) {
+            send.sendMessage(MTXCore.abilities().allAbilitiesList().toString());
             send.sendMessage(ChatColor.RED + "You need an ability name. Here are the abilities that " + player.getName() + " does not have:");
-            send.sendMessage(Abilities.detachedAbilitiesString(player));
+            send.sendMessage(MTXCore.abilities().detachedAbilitiesString(player));
             return false;
         }
 
-        Ability ab = Abilities.getAbility(args[1]);
+        Ability ab = MTXCore.abilities().getAbility(args[1]);
         if (ab == null) {
             send.sendMessage(ChatColor.RED + args[1] + " is not a valid ability.");
             return false;

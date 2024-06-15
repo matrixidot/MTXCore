@@ -9,22 +9,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Abilities {
-    private static ArrayList<Ability> abilities = new ArrayList<>();
+    private ArrayList<Ability> abilities;
 
-    public static void addAbility(Ability ability, JavaPlugin plugin) {
+    public Abilities() {
+        abilities = new ArrayList<>();
+    }
+
+    public void addAbility(Ability ability, JavaPlugin plugin) {
         if (!abilities.contains(ability)) {
             abilities.add(ability);
             Bukkit.getPluginManager().registerEvents(ability, plugin);
             ability.onRegisteredInternal();
+            Bukkit.getLogger().info("asd" + abilities.toString());
         }
     }
 
-    public static void removeAbility(Ability ability) {
+    public void removeAbility(Ability ability) {
         abilities.remove(ability);
         ability.OnUnregisteredInternal();
     }
 
-    public static Ability getAbility(String name) {
+    public Ability getAbility(String name) {
         for (Ability a : abilities) {
             if (a.getName().equals(name))
                 return a;
@@ -32,36 +37,36 @@ public class Abilities {
         return null;
     }
 
-    public static <T extends Ability> Ability getAbility(Class<T> clazz) {
+    public <T extends Ability> Ability getAbility(Class<T> clazz) {
         for (Ability a : abilities) {
             if (a.getClass().equals(clazz))
                 return a;
         }
         return null;
     }
-    public static List<Ability> allAbilitiesList() {
+    public List<Ability> allAbilitiesList() {
         return (List<Ability>) abilities.clone();
     }
-    public static String allAbilitiesString() {
+    public String allAbilitiesString() {
         StringBuilder names = new StringBuilder();
         allAbilitiesList().forEach(o -> names.append(o.toString()).append("\n"));
         return names.toString().trim();
     }
 
-    public static List<Ability> attachedAbilitiesList(Player player) {
+    public List<Ability> attachedAbilitiesList(Player player) {
         return allAbilitiesList().stream().filter(a -> a.isBound(player)).toList();
     }
-    public static String attachedAbilitiesString(Player player) {
+    public String attachedAbilitiesString(Player player) {
         StringBuilder names = new StringBuilder();
         attachedAbilitiesList(player).forEach(o -> names.append(o.toString()).append("\n"));
         return names.toString().trim();
     }
 
-    public static List<Ability> detachedAbilitiesList(Player player) {
+    public List<Ability> detachedAbilitiesList(Player player) {
         return allAbilitiesList().stream().filter(a -> !a.isBound(player)).toList();
     }
 
-    public static String detachedAbilitiesString(Player player) {
+    public String detachedAbilitiesString(Player player) {
         StringBuilder names = new StringBuilder();
         detachedAbilitiesList(player).forEach(o -> names.append(o.toString()).append("\n"));
         return names.toString().trim();
