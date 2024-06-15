@@ -69,4 +69,13 @@ public class Abilities {
         detachedAbilitiesList(player).forEach(o -> names.append(o.toString()).append("\n"));
         return names.toString().trim();
     }
+
+    public static void attach(Ability ab, Player player) {
+        ab.attach(player);
+    }
+
+    public static void detach(Ability ab, Player player) {
+        ab.detach(player);
+    }
+
 }

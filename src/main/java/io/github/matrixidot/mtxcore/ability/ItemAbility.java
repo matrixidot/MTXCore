@@ -49,4 +49,8 @@ public abstract class ItemAbility extends Ability {
     public ItemStack getItem() {
         return customItem;
     }
+
+    public String abilityName(String name, String enableMethod) {
+        return ChatColor.GOLD + "Item Ability: " + name + " " + ChatColor.YELLOW + ChatColor.BOLD + enableMethod.toUpperCase();
+    }
 }
