@@ -32,8 +32,11 @@ public class AttachCommand implements CommandExecutor {
             send.sendMessage(MTXCore.abilities().detachedAbilitiesString(player));
             return false;
         }
-
-        Ability ab = MTXCore.abilities().getAbility(args[1]);
+        StringBuilder a = new StringBuilder();
+        for (int i = 1; i < args.length; i++) {
+            a.append(args[i]).append(" ");
+        }
+        Ability ab = MTXCore.abilities().getAbility(a.toString().trim());
         if (ab == null) {
             send.sendMessage(ChatColor.RED + args[1] + " is not a valid ability.");
             return false;
