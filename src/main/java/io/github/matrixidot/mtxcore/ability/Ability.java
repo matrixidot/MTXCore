@@ -1,6 +1,5 @@
 package io.github.matrixidot.mtxcore.ability;
 
-import io.github.matrixidot.mtxcore.utils.DataUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -35,9 +34,12 @@ public abstract class Ability implements Listener {
     }
 
     void attach(Player player) {
-        DataUtils.addIfAbsent(players, player.getUniqueId());
-        player.sendMessage(ChatColor.GREEN + "Gained Ability: " + abilityName + "!\n" + ChatColor.AQUA + abilityDescription + ".");
-        attached(player);
+        if (!players.contains(player.getUniqueId())) {
+            players.add(player.getUniqueId());
+            player.sendMessage(ChatColor.GREEN + "Gained Ability: " + abilityName + "!\n" + ChatColor.AQUA + abilityDescription + ".");
+            attached(player);
+        }
+
     }
     public abstract void attached(Player player);
 

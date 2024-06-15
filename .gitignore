@@ -112,3 +112,4 @@ buildNumber.properties
 # Common working directory
 run/
 upload.bat
+send.bat

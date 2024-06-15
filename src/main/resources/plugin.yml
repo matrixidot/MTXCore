@@ -3,6 +3,7 @@ version: '${project.version}'
 main: io.github.matrixidot.mtxcore.MTXCore
 api-version: '1.20'
 load: STARTUP
+author: man_in_matrix#4484
 commands:
   attach:
     description: "Grants the player the specified ability"

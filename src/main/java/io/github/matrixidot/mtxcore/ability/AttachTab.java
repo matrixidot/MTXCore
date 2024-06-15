@@ -1,7 +1,5 @@
 package io.github.matrixidot.mtxcore.ability;
 
-import io.github.matrixidot.mtxcore.ability.Abilities;
-import io.github.matrixidot.mtxcore.ability.Ability;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
