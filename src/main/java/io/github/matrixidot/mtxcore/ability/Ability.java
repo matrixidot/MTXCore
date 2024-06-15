@@ -9,6 +9,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -75,14 +76,18 @@ public abstract class Ability implements Listener {
             detach(ev.getPlayer());
     }
 
+    public JavaPlugin getPlugin() {
+        return plugin;
+    }
+    public List<UUID> getPlayers() {
+        return players;
+    }
     public String getName() {
         return abilityName;
     }
-
     public String getDescription() {
         return abilityDescription;
     }
-
     @Override
     public String toString() {
         return abilityName;
