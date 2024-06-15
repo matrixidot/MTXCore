@@ -1,7 +1,6 @@
 package io.github.matrixidot.mtxcore.ability;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,7 +19,6 @@ public class Abilities {
             abilities.add(ability);
             Bukkit.getPluginManager().registerEvents(ability, plugin);
             ability.onRegisteredInternal();
-            Bukkit.getLogger().info("asd" + abilities.toString());
         }
     }
 
