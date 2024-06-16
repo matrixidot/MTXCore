@@ -27,15 +27,21 @@ public abstract class TimedRunnable extends BukkitRunnable {
         update();
     }
 
+    @Override
+    public synchronized void cancel() throws IllegalStateException {
+        super.cancel();
+        cancelled();
+    }
+
     private void checkDuration() {
         if (ticksLeft.get() <= 0)
-            this.cancel();
+            cancel();
         else
             ticksLeft.set(ticksLeft.get() - period);
     }
 
     public abstract void update();
-
+    public void cancelled() {}
     public int getSecondsLeft() {
         return ticksLeft.intValue() / 20;
     }
