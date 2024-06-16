@@ -35,4 +35,12 @@ public abstract class TimedRunnable extends BukkitRunnable {
     }
 
     public abstract void update();
+
+    public int getSecondsLeft() {
+        return ticksLeft.intValue() / 20;
+    }
+
+    public long getTicks() {
+        return ticksLeft.get();
+    }
 }
