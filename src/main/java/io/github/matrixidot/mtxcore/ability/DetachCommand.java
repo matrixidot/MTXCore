@@ -1,8 +1,6 @@
 package io.github.matrixidot.mtxcore.ability;
 
 import io.github.matrixidot.mtxcore.MTXCore;
-import io.github.matrixidot.mtxcore.ability.Abilities;
-import io.github.matrixidot.mtxcore.ability.Ability;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
