@@ -22,8 +22,18 @@ public class VectorMaths {
      * @return A unit-vector pointing from origin to bound.
      */
     public static Vector getVector(Location origin, Location bound) {
-        return new Vector(origin.getX() - bound.getX(), origin.getY() - bound.getY(), origin.getZ() - bound.getZ()).normalize();
+        return getVector(origin, bound, 1);
     }
 
+    /**
+     * Returns a unit-vector pointing from the origin location to the bound location.
+     * @param origin The Origin location
+     * @param bound The location the vector points towards starting from the Origin
+     * @param scale The number to multiply the unit vector by scaling it while keeping its direction the same.
+     * @return A unit-vector pointing from origin to bound.
+     */
+    public static Vector getVector(Location origin, Location bound, int scale) {
+        return new Vector(bound.getX() - origin.getX(), bound.getY() - origin.getY(), bound.getZ() - origin.getZ()).normalize().multiply(scale);
+    }
 
 }

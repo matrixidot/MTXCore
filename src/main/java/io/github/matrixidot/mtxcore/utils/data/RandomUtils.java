@@ -19,4 +19,15 @@ public class RandomUtils {
         list.remove(index);
         return obj;
     }
+
+    public static int random(int min, int max) {
+        return random.nextInt(min, max);
+    }
+
+    public static int[] randomNums(int min, int max, int size) {
+        int[] nums = new int[size];
+        for (int i = 0; i < size; i++)
+            nums[i] = random(min, max);
+        return nums;
+    }
 }

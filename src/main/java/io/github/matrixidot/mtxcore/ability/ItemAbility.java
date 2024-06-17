@@ -1,9 +1,11 @@
 package io.github.matrixidot.mtxcore.ability;
 
+import io.github.matrixidot.mtxcore.utils.player.PlayerUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
@@ -41,7 +43,7 @@ public abstract class ItemAbility extends Ability {
         if (!getPlayers().contains(player.getUniqueId())) {
             getPlayers().add(player.getUniqueId());
             player.sendMessage(ChatColor.GREEN + "Gained Ability: " + getName() + "!\n" + ChatColor.AQUA + getDescription() + ".");
-            player.getInventory().addItem(customItem);
+            PlayerUtils.addItemSafe(player, customItem);
             attached(player);
         }
     }
