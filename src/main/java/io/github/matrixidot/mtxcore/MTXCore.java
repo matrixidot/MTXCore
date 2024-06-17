@@ -23,7 +23,9 @@ public class MTXCore extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "==================");
+        getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "=MTXCore Disabled=");
+        getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "==================");
     }
 
     public static Abilities abilities() {
