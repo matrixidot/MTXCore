@@ -24,6 +24,7 @@ public abstract class TimedRunnable extends BukkitRunnable {
     @Override
     public void run() {
         checkDuration();
+        if (isCancelled()) return;
         update();
     }
 
@@ -35,20 +36,14 @@ public abstract class TimedRunnable extends BukkitRunnable {
 
     public abstract void update();
 
-
     private void checkDuration() {
-        if (isCancelled()) return;
-        if (ticksLeft.get() <= 0) {
+        if (ticksLeft.get() <= 0)
             cancel();
-            return;
-        }
         else
             ticksLeft.set(ticksLeft.get() - period);
     }
 
-    public void cancelled() {
-        super.cancel();
-    }
+    public void cancelled() {}
     public int getSecondsLeft() {
         return ticksLeft.intValue() / 20;
     }
