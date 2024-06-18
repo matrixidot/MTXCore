@@ -47,7 +47,7 @@ public abstract class TimedRunnable extends BukkitRunnable {
     }
 
     public void cancelled() {
-        cancel();
+        super.cancel();
     }
     public int getSecondsLeft() {
         return ticksLeft.intValue() / 20;

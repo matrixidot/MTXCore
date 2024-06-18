@@ -39,7 +39,7 @@ public abstract class LoopedRunnable extends BukkitRunnable {
             loopsLeft.set(loopsLeft.get() - 1);
     }
     public void cancelled() {
-        cancel();
+        super.cancel();
     }
     public int getLoopsLeft() {
         return loopsLeft.get();
