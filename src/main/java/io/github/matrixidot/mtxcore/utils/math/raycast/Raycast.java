@@ -70,8 +70,7 @@ public class Raycast {
                 this.testedLocations.add(this.rayCastLocation);
                 length++;
                 computeLocation(new Vector(0.0D, 0.0D, length + 50.0D));
-                if (this.showRayCast)
-                    this.world.spawnParticle(Particle.DRIP_LAVA, this.rayCastLocation.getX(), this.rayCastLocation.getY(), this.rayCastLocation.getZ(), 0, 0.0D, 0.0D, 0.0D);
+                spawnParticle();
             }
             if (!this.passthroughMaterials.contains(this.rayCastLocation.getBlock().getType())) {
                 this.hurtBlock = this.rayCastLocation.getBlock();
@@ -86,13 +85,7 @@ public class Raycast {
                 length++;
                 computeLocation(new Vector(0.0D, 0.0D, length + 50.0D));
                 entities = this.world.getNearbyEntities(this.rayCastLocation, 0.01D, 0.01D, 0.01D);
-                if (this.showRayCast) {
-                    if (this.particle == Particle.REDSTONE) {
-                        this.world.spawnParticle(this.particle, this.rayCastLocation.getX(), this.rayCastLocation.getY(), this.rayCastLocation.getZ(), 1, 0.2D, 0.2D, 0.2D, new Particle.DustOptions(Color.ORANGE, 0.25F));
-                        continue;
-                    }
-                    this.world.spawnParticle(this.particle, this.rayCastLocation.getX(), this.rayCastLocation.getY(), this.rayCastLocation.getZ(), 0, 0.05D, 0.05D, 0.05D);
-                }
+                spawnParticle();
             }
             if (entities.size() > 0) {
                 for (Entity entity : entities) {
@@ -108,8 +101,7 @@ public class Raycast {
                 length++;
                 computeLocation(new Vector(0.0D, 0.0D, length + 50.0D));
                 entities = this.world.getNearbyEntities(this.rayCastLocation, 0.01D, 0.01D, 0.01D);
-                if (this.showRayCast)
-                    this.world.spawnParticle(Particle.DRIP_LAVA, this.rayCastLocation.getX(), this.rayCastLocation.getY(), this.rayCastLocation.getZ(), 0, 0.0D, 0.0D, 0.0D);
+                spawnParticle();
             }
             if (!this.passthroughMaterials.contains(this.rayCastLocation.getBlock().getType())) {
                 this.rayCastType = RaycastType.BLOCK;
@@ -127,6 +119,16 @@ public class Raycast {
             }
         }
         return false;
+    }
+
+    private void spawnParticle() {
+        if (this.showRayCast) {
+            if (this.particle == Particle.REDSTONE) {
+                this.world.spawnParticle(this.particle, this.rayCastLocation.getX(), this.rayCastLocation.getY(), this.rayCastLocation.getZ(), 1, 0.2D, 0.2D, 0.2D, new Particle.DustOptions(Color.ORANGE, 0.25F));
+                return;
+            }
+            this.world.spawnParticle(this.particle, this.rayCastLocation.getX(), this.rayCastLocation.getY(), this.rayCastLocation.getZ(), 0, 0.05D, 0.05D, 0.05D);
+        }
     }
 
     private void computeLocation(Vector rayCastPos) {

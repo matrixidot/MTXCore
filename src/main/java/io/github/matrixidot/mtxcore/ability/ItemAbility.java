@@ -5,7 +5,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
@@ -54,5 +53,8 @@ public abstract class ItemAbility extends Ability {
 
     public String abilityName(String name, String enableMethod) {
         return ChatColor.GOLD + "Item Ability: " + name + " " + ChatColor.YELLOW + ChatColor.BOLD + enableMethod.toUpperCase();
+    }
+    public String cooldownText(int time) {
+        return ChatColor.GRAY + "Cooldown | " + ChatColor.RED + time + ChatColor.GRAY + "s";
     }
 }
