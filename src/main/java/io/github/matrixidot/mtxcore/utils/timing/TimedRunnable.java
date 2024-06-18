@@ -38,8 +38,10 @@ public abstract class TimedRunnable extends BukkitRunnable {
 
     private void checkDuration() {
         if (isCancelled()) return;
-        if (ticksLeft.get() <= 0)
+        if (ticksLeft.get() <= 0) {
             cancel();
+            return;
+        }
         else
             ticksLeft.set(ticksLeft.get() - period);
     }
