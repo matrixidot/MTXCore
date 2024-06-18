@@ -30,12 +30,15 @@ public abstract class LoopedRunnable extends BukkitRunnable {
     public abstract void update();
 
     private void checkLoops() {
+        if (isCancelled()) return;
         if (loopsLeft.get() <= 0)
             cancel();
         else
             loopsLeft.set(loopsLeft.get() - 1);
     }
-    public void cancelled() {}
+    public void cancelled() {
+        cancel();
+    }
     public int getLoopsLeft() {
         return loopsLeft.get();
     }
