@@ -123,7 +123,7 @@ public class Raycast {
 
     private void spawnParticle() {
         if (this.showRayCast) {
-            if (this.particle == Particle.REDSTONE) {
+            if (this.particle == Particle.FLAME) {
                 this.world.spawnParticle(this.particle, this.rayCastLocation.getX(), this.rayCastLocation.getY(), this.rayCastLocation.getZ(), 1, 0.2D, 0.2D, 0.2D, new Particle.DustOptions(Color.ORANGE, 0.25F));
                 return;
             }
